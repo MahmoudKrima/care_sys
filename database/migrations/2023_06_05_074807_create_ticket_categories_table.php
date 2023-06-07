@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('ticket_categories', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
+            $table->text('title_ar');
+            $table->text('title_en');
             $table->timestamps();
         });
     }

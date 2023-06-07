@@ -16,22 +16,28 @@ class DefaultServiceCategorySeeder extends Seeder
     {
         $input = [
             [
-                'name' => 'زياره عيادة',
+                'name_ar' => 'زياره عيادة',
+                'name_en' => 'Clinic Visit',
             ],
             [
-                'name' => 'كوفيد - 19 ',
+                'name_ar' => 'كوفيد - 19 ',
+                'name_en' => 'Covid-19',
             ],
             [
-                'name' => 'عروض',
+                'name_ar' => 'عروض',
+                'name_en' => 'Offers',
             ],
             [
-                'name' => 'صيدليه',
+                'name_ar' => 'صيدليه',
+                'name_en' => 'Pharmacy',
             ],
             [
-                'name' => 'الامراض',
+                'name_ar' => 'الامراض',
+                'name_en' => 'Diseasses',
             ],
             [
-                'name' => 'زياره منزليه',
+                'name_ar' => 'زياره منزليه',
+                'name_en' => 'Home Visit',
             ],
         ];
 

@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('service_categories', function (Blueprint $table) {
-            $table->string('image')->nullable();
+            $table->string('image_ar')->nullable();
+            $table->string('image_en')->nullable();
             $table->tinyInteger('status')->default(0)->
             comment(
             '0=>normal

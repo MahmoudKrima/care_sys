@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AppLangController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\DiseasController;
@@ -45,9 +46,12 @@ Route::post('/medical-register',[RegisterController::class,'register']);
 Route::post('/medical-confirm',[RegisterController::class,'confirmCode']);
 
 //OnBoarding
-Route::get('/medical-onboarding', [OnBoardingController::class, 'index']);
+Route::get('/medical-onboarding', [OnBoardingController::class, 'index'])->middleware('lang');
 
-Route::group(['middleware' => 'api.token'], function () {
+//language
+Route::post('/medical-lang',[AppLangController::class,'setLang']);
+
+Route::group(['middleware' => ['api.token','lang']], function () {
 
 //Auth
 Route::post('/medical-logout', [RegisterController::class, 'logout']);
@@ -87,11 +91,11 @@ Route::post('/medical-medicine/{id?}', [MedicineController::class, 'show']);
 
 //specialist
 Route::get('/medical-disease-specialist', [DiseasSpecialistController::class, 'index']);
-Route::post('/medical-disease-specialist/{id?}', [DiseasSpecialistController::class, 'show']);
+Route::post('/medical-disease-specialization', [DiseasSpecialistController::class, 'show']);
 
 //specialist
 Route::get('/medical-disease', [DiseasController::class, 'index']);
-Route::post('/medical-disease/{id?}', [DiseasController::class, 'show']);
+Route::post('/medical-one-disease', [DiseasController::class, 'show']);
 
 // Review
 Route::get('/medical-reviews', [ReviewController::class, 'index']);

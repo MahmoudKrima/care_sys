@@ -12,14 +12,23 @@ class DiseasSpecialistController extends Controller
     Use ApiResponseTrait;
 
     public function index()
-    {
-        $data=Specialization::with('diseases')->get();
-        return ApiResponseTrait::apiResponse($data,('Get All Data Successfully'),200);
-    }
+{
+    $locale = app()->getLocale();
+    $data = Specialization::with(['diseases' => function ($query) use ($locale) {
+        $query->select('id', "title_$locale as title", "image_$locale as image", 'specialist_id', 'created_at', 'updated_at');
+    }])->select("id", "name_$locale as name", 'created_at', 'updated_at')->get();
 
-    public function show(Request $request)
-    {
-        $data=Specialization::with('diseases')->where('id',$request->id)->first();
-        return ApiResponseTrait::apiResponse($data,('Get Specialization Successfully'),200);
-    }
+    return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
+}
+
+public function show(Request $request)
+{
+    $locale = app()->getLocale();
+    $data = Specialization::with(['diseases' => function ($query) use ($locale) {
+        $query->select('id', "title_$locale as title", "image_$locale as image", 'specialist_id', 'created_at', 'updated_at');
+    }])->select("id", "name_$locale as name", 'created_at', 'updated_at')->where('id', $request->id)->first();
+
+    return ApiResponseTrait::apiResponse($data, 'Get Specialization Successfully', 200);
+}
+
 }

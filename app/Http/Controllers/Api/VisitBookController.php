@@ -15,15 +15,27 @@ class VisitBookController extends Controller
     Use ApiResponseTrait;
 
     public function index(Request $request)
-    {
-        $data=VisitBook::with('patient','subVisit')->where('patient_id',$request->patient_id)->get();
-        return ApiResponseTrait::apiResponse($data,('Get All Data Successfully'),200);
-    }
+{
+    $locale = app()->getLocale();
+    $data = VisitBook::with(['patient', 'subVisit' => function ($query) use ($locale) {
+        $query->select('id', "title_$locale as title", 'home_visit_id', 'created_at', 'updated_at');
+    }])->select('id', 'patient_id', 'appointments', 'sub_visit_id', 'voice_notes', 'notes', 'address', 'attachments', 'status', 'created_at', 'updated_at')
+      ->where('patient_id', $request->patient_id)
+      ->get();
+
+    return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
+}
+
 
     public function show(Request $request)
-    {
-        $data=VisitBook::with('patient','subVisit')->where('id',$request->id)->first();
-        return ApiResponseTrait::apiResponse($data,('Get Book Successfully'),200);
+    { $locale = app()->getLocale();
+        $data = VisitBook::with(['patient', 'subVisit' => function ($query) use ($locale) {
+            $query->select('id', "title_$locale as title", 'home_visit_id', 'created_at', 'updated_at');
+        }])->select('id', 'patient_id', 'appointments', 'sub_visit_id', 'voice_notes', 'notes', 'address', 'attachments', 'status', 'created_at', 'updated_at')
+          ->where('id', $request->id)
+          ->get();
+    
+        return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
     }
 
     public function store(Request $request)

@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('pharmacy_category', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title_ar');
+            $table->string('title_en');
             $table->timestamps();
         });
     }

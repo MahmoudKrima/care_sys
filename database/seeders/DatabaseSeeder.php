@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DefaultServicesSeeder::class);
         $this->call(DefaultCurrenciesSeeder::class);
         $this->call(DefaultStaffSeeder::class);
-        $this->call(DefaultSliderSeeder::class);
         $this->call(DefaultFaqsSeeder::class);
         $this->call(DefaultFrontPatientTestimonialsSeeder::class);
         $this->call(AddFieldsSettingTableSeeder::class);

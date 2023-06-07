@@ -14,7 +14,18 @@ class OnBoardingController extends Controller
 
     public function index()
     {
-        $data=OnBoarding::all();
-        return ApiResponseTrait::apiResponse($data,('Get All Data Successfully'),200);
+        $locale = app()->getLocale();
+    
+        $data = OnBoarding::select([
+            'id',
+            'title_' . $locale . ' as title',
+            'description_' . $locale . ' as description',
+            'image_' . $locale .' as image',
+            'created_at',
+            'updated_at'
+        ])->get();
+    
+        return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
     }
+    
 }

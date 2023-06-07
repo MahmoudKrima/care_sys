@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->text('code')->unique();
+            $table->string('code')->unique();
             $table->foreignId('patient_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('ticket_category')->constrained('ticket_categories')->cascadeOnDelete();
             $table->text('problem');
-            $table->text('answer')->nullable();
+            $table->text('answer_ar')->nullable();
+            $table->text('answer_en')->nullable();
             $table->json('attachments')->nullable();
             $table->tinyInteger('status')->default(0)->
             comment(

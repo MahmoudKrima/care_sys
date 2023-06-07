@@ -19,7 +19,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 1,
-                'name' => 'الطب العام.',
+                'name_ar' => 'الطب العام.',
+                'name_en' => 'General Medicine',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -28,7 +29,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 2,
-                'name' => 'طب الأطفال.',
+                'name_ar' => 'طب الأطفال.',
+                'name_en' => 'Pediatrics',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -37,7 +39,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 3,
-                'name' => 'طب الأسنان.',
+                'name_ar' => 'طب الأسنان.',
+                'name_en' => 'Dentist',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -46,7 +49,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 4,
-                'name' => 'جراحة القلب.',
+                'name_ar' => 'جراحة القلب.',
+                'name_en' => 'Heart Surgery',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -55,7 +59,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 5,
-                'name' => 'الطب النفسي.',
+                'name_ar' => 'الطب النفسي.',
+                'name_en' => 'Psychiatry',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -64,7 +69,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 6,
-                'name' => 'أمراض الكلى',
+                'name_ar' => 'أمراض الكلى',
+                'name_en' => 'Kidney disease',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -73,7 +79,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 7,
-                'name' => 'أمراض الغدد',
+                'name_ar' => 'أمراض الغدد',
+                'name_en' => 'Diseases of the glands',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -82,7 +89,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 8,
-                'name' => 'طب الطوارئ.',
+                'name_ar' => 'طب الطوارئ.',
+                'name_en' => 'Emergency Medicine',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',
@@ -91,7 +99,8 @@ class DefaultServicesSeeder extends Seeder
             [
                 'category_id' => '1',
                 'specialization_id' => 9,
-                'name' => 'التحاليل الطبية.',
+                'name_ar' => 'التحاليل الطبية.',
+                'name_en' => 'Medical tests',
                 'charges' => '500',
                 'status' => Service::ACTIVE,
                 'short_description' => 'Phasellus venenatis porta rhoncus. Integer et viverra felis.',

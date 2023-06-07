@@ -16,6 +16,7 @@
                         <p class="text-primary fs-5 fw-bold">{{ $sliders->title }}</p>
                         <h1 class="mb-5">
                             {{ $sliders->short_description }}
+                            {{app()->getLocale() == 'en' ? '1' : '2'}}
                         </h1>
                         @if(!getLogInUser())
                             <a href="{{ route('register') }}"

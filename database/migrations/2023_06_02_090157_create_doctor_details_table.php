@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
-            $table->text('informations');
-            $table->text('another_informations');
+            $table->text('informations_ar');
+            $table->text('informations_en');
+            $table->text('another_informations_ar');
+            $table->text('another_informations_en');
             $table->text('profile');
             $table->double('price',8,3);
             $table->timestamps();

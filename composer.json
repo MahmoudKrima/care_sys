@@ -31,6 +31,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.10",
         "mariuzzo/laravel-js-localization": "^1.9",
+        "mcamara/laravel-localization": "^1.8",
         "mews/purifier": "^3.3",
         "opcodesio/log-viewer": "^1.7",
         "rappasoft/laravel-livewire-tables": "dev-master",

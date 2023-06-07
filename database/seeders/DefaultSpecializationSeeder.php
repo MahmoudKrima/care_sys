@@ -16,40 +16,52 @@ class DefaultSpecializationSeeder extends Seeder
     {
         $input = [
             [
-                'name' => 'الطب العام.',
+                'name_ar' => 'الطب العام',
+                'name_en' => 'General Medicine',
             ],
             [
-                'name' => 'طب الأطفال.',
+                'name_ar' => 'طب الأطفال',
+                'name_en' => 'Pediatrics',
             ],
             [
-                'name' => 'طب الأسنان.',
+                'name_ar' => 'طب الأسنان',
+                'name_en' => 'Dentist',
             ],
             [
-                'name' => 'جراحة القلب.',
+                'name_ar' => 'جراحة القلب',
+                'name_en' => 'Heart Surgery',
             ],
             [
-                'name' => 'الطب النفسي.',
+                'name_ar' => 'الطب النفسي',
+                'name_en' => 'Psychiatry',
             ],
             [
-                'name' => 'أمراض الكلى',
+                'name_ar' => 'أمراض الكلى',
+                'name_en' => 'Kidney disease',
             ],
             [
-                'name' => 'أمراض الغدد',
+                'name_ar' => 'أمراض الغدد',
+                'name_en' => 'Diseases of the glands',
             ],
             [
-                'name' => 'طب الطوارئ.',
+                'name_ar' => 'طب الطوارئ',
+                'name_en' => 'Emergency Medicine',
             ],
             [
-                'name' => 'التحاليل الطبية.',
+                'name_ar' => 'التحاليل الطبية',
+                'name_en' => 'Medical tests',
             ],
             [
-                'name' => 'أمراض النخاع.',
+                'name_ar' => 'أمراض النخاع',
+                'name_en' => 'Diseases of the bone marrow',
             ],
             [
-                'name' => 'الأمراض الجلدية.',
+                'name_ar' => 'الأمراض الجلدية',
+                'name_en' => 'Skin diseases',
             ],
             [
-                'name' => 'طب النسائية والتوليد.',
+                'name_ar' => 'طب النسائية والتوليد',
+                'name_en' => 'Obstetrics and gynecology',
             ],
         ];
 

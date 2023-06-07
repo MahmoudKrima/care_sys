@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->text('code')->unique();
+            $table->string('code')->unique();
             $table->foreignId('patient_id')->constrained('users')->cascadeOnDelete();
             $table->dateTime('estimated_time');
             $table->double('total',8,3);

@@ -19,7 +19,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validation = validator()->make($request->all(),[
-            'contact' => ['required'],
+            'contact' => ['required','unique:users,contact'],
             'password' => ['required','confirmed','min:6','max:20']
         ]);
         if($validation->fails())
@@ -41,7 +41,7 @@ class RegisterController extends Controller
 
     public function completeRegister(Request $request)
 {
-    $user = User::where('api_token', $request->header('Authorization'))->first();
+    $user = User::where('api_token', $request->header('Authorization'))->where('contact',$request->contact)->first();
 
     if ($user->confirmation_code == null) {
         $validation = validator($request->all(), [

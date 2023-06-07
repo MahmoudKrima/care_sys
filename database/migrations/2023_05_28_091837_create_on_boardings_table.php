@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('on_boardings', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->text('description')->nullable();
-            $table->text('image');
+            $table->text('title_ar');
+            $table->text('title_en');
+            $table->text('description_ar')->nullable();
+            $table->text('description_en')->nullable();
+            $table->text('image_ar');
+            $table->text('image_en');
             $table->timestamps();
         });
     }

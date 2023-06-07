@@ -24,35 +24,38 @@ class CartController extends Controller
     }
 
     public function index(Request $request)
-{
-    $data = User::where('id', $request->id)
-        ->with('cart.offer', 'cart.medicine')
-        ->first();
-
-    $cart = $data->cart;
-    $pricesAfterSale = [];
-    $totalPriceAfterSale = 0;
-
-    foreach ($cart as $item) {
-        if ($item->offer) {
-            $price = $item->offer->price;
-            $sale = $item->offer->sale;
-            $priceAfterSale = $price - ($price * $sale / 100);
-            $pricesAfterSale[] = $priceAfterSale;
-            $totalPriceAfterSale += $priceAfterSale;
-        } elseif ($item->medicine) {
-            $price = $item->medicine->price;
-            $sale = $item->medicine->sale;
-            $priceAfterSale = $price - ($price * $sale / 100);
-            $pricesAfterSale[] = $priceAfterSale;
-            $totalPriceAfterSale += $priceAfterSale;
-        }
-    }
-$data['totalPriceAfterSale'] = $totalPriceAfterSale;
+    {
+        $data = User::where('id', $request->id)
+            ->with(['cart.offer' => function ($query) {
+                $query->select('id', 'title_' . app()->getLocale(), 'image_' . app()->getLocale(), 'price', 'sale', 'stock', 'type_' . app()->getLocale(), 'type_description_' . app()->getLocale(), 'brand_' . app()->getLocale(), 'age_' . app()->getLocale(), 'status');
+            }, 'cart.medicine:title_' . app()->getLocale()])
+            ->first();
     
-
-    return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
-}
+        $cart = $data->cart;
+        $pricesAfterSale = [];
+        $totalPriceAfterSale = 0;
+    
+        foreach ($cart as $item) {
+            if ($item->offer) {
+                $price = $item->offer->price;
+                $sale = $item->offer->sale;
+                $priceAfterSale = $price - ($price * $sale / 100);
+                $pricesAfterSale[] = $priceAfterSale;
+                $totalPriceAfterSale += $priceAfterSale;
+            } elseif ($item->medicine) {
+                $price = $item->medicine->price;
+                $sale = $item->medicine->sale;
+                $priceAfterSale = $price - ($price * $sale / 100);
+                $pricesAfterSale[] = $priceAfterSale;
+                $totalPriceAfterSale += $priceAfterSale;
+            }
+        }
+    
+        $data->totalPriceAfterSale = $totalPriceAfterSale;
+    
+        return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
+    }
+    
 
 
     public function checkout(Request $request){

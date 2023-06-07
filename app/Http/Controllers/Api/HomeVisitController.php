@@ -12,14 +12,22 @@ class HomeVisitController extends Controller
     Use ApiResponseTrait;
 
     public function index()
-    {
-        $data=HomeVisits::with('subVisit')->get();
-        return ApiResponseTrait::apiResponse($data,('Get All Data Successfully'),200);
-    }
+{
+    $locale = app()->getLocale();
+    $data = HomeVisits::with(['subVisit' => function ($query) use ($locale) {
+        $query->select('id', "title_$locale as title", 'home_visit_id', 'created_at', 'updated_at');
+    }])->select('id', "title_$locale as title", 'created_at', 'updated_at')->get();
 
-    public function show(Request $request)
-    {
-        $data=HomeVisits::with('subVisit')->where('id',$request->id)->first();
-        return ApiResponseTrait::apiResponse($data,('Get Category Successfully'),200);
-    }
+    return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
+}
+public function show(Request $request)
+{
+    $locale = app()->getLocale();
+    $data = HomeVisits::with(['subVisit' => function ($query) use ($locale) {
+        $query->select('id', "title_$locale as title", 'home_visit_id', 'created_at', 'updated_at');
+    }])->select('id', "title_$locale as title", 'created_at', 'updated_at')->where('id', $request->id)->first();
+
+    return ApiResponseTrait::apiResponse($data, 'Get Category Successfully', 200);
+}
+
 }

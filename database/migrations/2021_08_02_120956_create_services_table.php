@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->string('name');
+            $table->string('name_ar');
+            $table->string('name_en');
             $table->double('charges')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();

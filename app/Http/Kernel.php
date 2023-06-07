@@ -94,6 +94,13 @@ class Kernel extends HttpKernel
         'checkImpersonateUser' => checkImpersonateUser::class,
         'setLanguage' => SetLanguage::class,
         'api.token' => \App\Http\Middleware\ApiToken::class,
+        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
+        'lang'                    => \App\Http\Middleware\LocalizationMiddleware::class,
+
 
     ];
 }

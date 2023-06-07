@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('offer_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('offer_id')->constrained('offers')->cascadeOnDelete();
-            $table->text('details');
-            $table->text('how_to_use');
+            $table->text('details_ar');
+            $table->text('details_en');
+            $table->text('how_to_use_ar');
+            $table->text('how_to_use_en');
             $table->timestamps();
         });
     }

@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('medicine_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('medicine_id')->constrained('medicine')->cascadeOnDelete();
-            $table->text('details');
-            $table->text('how_to_use');
+            $table->text('details_ar');
+            $table->text('details_en');
+            $table->text('how_to_use_ar');
+            $table->text('how_to_use_en');
             $table->timestamps();
         });
     }

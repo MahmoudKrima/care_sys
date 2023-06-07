@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('sub_home_visits', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->text('title_ar');
+            $table->text('title_en');
             $table->foreignId('home_visit_id')->constrained('home_visits')->cascadeOnDelete();
             $table->timestamps();
         });
