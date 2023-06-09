@@ -76,7 +76,7 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        $specializations = Specialization::pluck('name', 'id')->toArray();
+        $specializations = Specialization::pluck('name_'.App()->getLocale(), 'id')->toArray();
         $country = $this->userRepo->getCountries();
         $bloodGroup = Doctor::BLOOD_GROUP_ARRAY;
 

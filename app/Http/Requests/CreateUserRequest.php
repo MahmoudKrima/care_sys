@@ -22,10 +22,10 @@ class CreateUserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
-        return User::$rules;
-    }
+    // public function rules()
+    // {
+    //     return User::$rules;
+    // }
 
     /**
      * @return string[]

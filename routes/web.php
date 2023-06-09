@@ -211,7 +211,7 @@ Route::prefix('admin')->middleware('auth', 'xss', 'checkUserStatus', 'checkImper
     });
 
     // Settings routes
-    Route::middleware('permission:manage_settings')->group(function () {
+    Route::middleware(['permission:manage_settings','lang'])->group(function () {
         Route::get('/settings', [SettingController::class, 'index'])->name('setting.index');
         Route::post('/settings', [SettingController::class, 'update'])->name('setting.update');
         Route::get('states-list', [SettingController::class, 'getStates'])->name('states-list');
@@ -288,7 +288,7 @@ Route::prefix('admin')->middleware('auth', 'xss', 'checkUserStatus', 'checkImper
     });
 
     // Slider route
-    Route::middleware('permission:manage_front_cms')->group(function () {
+    Route::middleware(['permission:manage_front_cms','lang'])->group(function () {
         Route::get('cms', [CMSController::class, 'index'])->name('cms.index');
         Route::post('cms', [CMSController::class, 'update'])->name('cms.update');
         Route::resource('sliders', SliderController::class)->except('create', 'store', 'destroy', 'show');

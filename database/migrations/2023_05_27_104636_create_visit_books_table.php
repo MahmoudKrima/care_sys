@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('visit_books', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id')->constrained('users')->cascadeOnDelete();
-            $table->date('appointments')->nullable();
-            $table->foreignId('sub_visit_id')->constrained('sub_home_visits')->cascadeOnDelete();
+            $table->date('appointments');
+            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
             $table->text('voice_notes')->nullable();
             $table->text('notes')->nullable();
             $table->text('address');
@@ -28,6 +28,7 @@ return new class extends Migration
             1=>InProgress
             2=>Active
             3=>Done
+            4=>Refused
             ');
             $table->timestamps();
         });

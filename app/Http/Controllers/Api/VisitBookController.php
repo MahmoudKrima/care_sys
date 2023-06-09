@@ -16,27 +16,31 @@ class VisitBookController extends Controller
 
     public function index(Request $request)
 {
+
     $locale = app()->getLocale();
     $data = VisitBook::with(['patient', 'subVisit' => function ($query) use ($locale) {
-        $query->select('id', "title_$locale as title", 'home_visit_id', 'created_at', 'updated_at');
-    }])->select('id', 'patient_id', 'appointments', 'sub_visit_id', 'voice_notes', 'notes', 'address', 'attachments', 'status', 'created_at', 'updated_at')
-      ->where('patient_id', $request->patient_id)
-      ->get();
-
-    return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
-}
-
-
-    public function show(Request $request)
-    { $locale = app()->getLocale();
-        $data = VisitBook::with(['patient', 'subVisit' => function ($query) use ($locale) {
-            $query->select('id', "title_$locale as title", 'home_visit_id', 'created_at', 'updated_at');
-        }])->select('id', 'patient_id', 'appointments', 'sub_visit_id', 'voice_notes', 'notes', 'address', 'attachments', 'status', 'created_at', 'updated_at')
-          ->where('id', $request->id)
-          ->get();
+        $query->select('id', "name_$locale as name", 'charges', 'created_at', 'updated_at');
+    }])
+        ->select('id', 'patient_id', 'appointments', 'service_id', 'voice_notes', 'notes', 'address', 'attachments', 'status', 'created_at', 'updated_at')
+        ->where('patient_id', $request->patient_id)
+        ->get();
     
-        return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
-    }
+    return ApiResponseTrait::apiResponse($data, 'Get All Data Successfully', 200);
+}    
+
+
+public function show(Request $request)
+{
+    $locale = app()->getLocale();
+    $data = VisitBook::with(['patient', 'subVisit' => function ($query) use ($locale) {
+        $query->select('id', "name_$locale as name", 'charges', 'created_at', 'updated_at');
+    }])
+        ->select('id', 'patient_id', 'appointments', 'service_id', 'voice_notes', 'notes', 'address', 'attachments', 'status', 'created_at', 'updated_at')
+        ->where('id', $request->id)
+        ->first();
+
+    return ApiResponseTrait::apiResponse($data, 'Get Data Successfully', 200);
+}
 
     public function store(Request $request)
     {
@@ -47,7 +51,7 @@ class VisitBookController extends Controller
     
         $visit = VisitBook::create([
             'patient_id' => $request->patient_id,
-            'sub_visit_id' => $request->sub_visit_id,
+            'service_id' => $request->service_id,
             'notes' => $request->notes,
             'address' => $request->address,
         ]);

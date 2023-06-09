@@ -54,7 +54,7 @@ class SettingController extends AppBaseController
             $cities = getCities($states);
         }
         $countries = Country::toBase()->pluck('name', 'id');
-        $specialities = Specialization::orderBy('name', 'asc')->pluck('name', 'id');
+        $specialities = Specialization::orderBy('name_'.App()->getLocale(), 'asc')->pluck('name_'.App()->getLocale(), 'id');
         $currencies = Currency::toBase()->pluck('currency_name', 'id');
         $paymentGateways = Appointment::PAYMENT_METHOD;
         $selectedPaymentGateways = PaymentGateway::pluck('payment_gateway')->toArray();

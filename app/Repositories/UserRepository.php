@@ -11,12 +11,13 @@ use App\Models\Patient;
 use App\Models\Qualification;
 use App\Models\Specialization;
 use App\Models\User;
-use Arr;
-use Carbon\Carbon;
-use Hash;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
+
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
 /**
@@ -64,13 +65,16 @@ class UserRepository extends BaseRepository
             ['address1', 'address2', 'country_id', 'city_id', 'state_id', 'postal_code']);
         $doctorArray = Arr::only($input, ['experience', 'twitter_url', 'linkedin_url', 'instagram_url']);
         $specialization = $input['specializations'];
-        try {
+        
             DB::beginTransaction();
             $input['email'] = setEmailLowerCase($input['email']);
             $input['status'] = (isset($input['status'])) ? 1 : 0;
             $input['password'] = Hash::make($input['password']);
-            $input['type'] = User::DOCTOR;
+            dd($input);
+            // $input['type'] = User::DOCTOR;
             $doctor = User::create($input);
+            $doctor->role_id = 2;
+            $doctor->type = 2;
             $doctor->assignRole('doctor');
             $doctor->address()->create($addressInputArray);
             $createDoctor = $doctor->doctor()->create($doctorArray);
@@ -82,10 +86,9 @@ class UserRepository extends BaseRepository
             DB::commit();
 
             return $doctor;
-        } catch (\Exception $e) {
-            throw new UnprocessableEntityHttpException($e->getMessage());
-        }
+      
     }
+
 
     /**
      * @param  array  $input

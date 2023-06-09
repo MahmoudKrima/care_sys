@@ -14,7 +14,7 @@ class VisitBook extends Model
         return $this->hasOne(User::class,'id','patient_id');
     }
     public function subVisit(){
-        return $this->hasOne(SubHomeVisits::class,'id','sub_visit_id');
+        return $this->hasOne(Service::class,'id','service_id');
     }
 
 }

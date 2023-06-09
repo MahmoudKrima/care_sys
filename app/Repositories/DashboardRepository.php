@@ -33,8 +33,8 @@ class DashboardRepository
         $data['totalPatientCount'] = User::toBase()->whereType(User::PATIENT)->count();
         $data['todayAppointmentCount'] = Appointment::toBase()->where('date', Carbon::now()->format('Y-m-d'))->whereStatus(Appointment::BOOKED)->count();
         $data['totalRegisteredPatientCount'] = User::toBase()->whereType(User::PATIENT)->whereRaw('Date(created_at) = CURDATE()')->count();
-        $data['servicesArr'] = Service::toBase()->whereStatus(true)->pluck('name', 'id')->toArray();
-        $data['serviceCategoriesArr'] = ServiceCategory::toBase()->pluck('name', 'id')->toArray();
+        $data['servicesArr'] = Service::toBase()->whereStatus(true)->pluck('name_'.App()->getLocale(), 'id')->toArray();
+        $data['serviceCategoriesArr'] = ServiceCategory::toBase()->pluck('name_'.App()->getLocale(), 'id')->toArray();
         $data['doctorArr'] = Doctor::with('user')->get()->pluck('user.full_name', 'id')->toArray();
 
         return $data;

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\DiseasController;
 use App\Http\Controllers\Api\DiseasSpecialistController;
+use App\Http\Controllers\Api\DoctorBookController;
 use App\Http\Controllers\Api\HomeVisitController;
 use App\Http\Controllers\Api\MedicineController;
 use App\Http\Controllers\Api\OfferController;
@@ -110,10 +111,15 @@ Route::post('/medical-visit-category', [HomeVisitController::class, 'show']);
 Route::get('/medical-all-sub-visit', [SubHomeVisitController::class, 'index']);
 Route::post('/medical-sub-visit', [SubHomeVisitController::class, 'show']);
 
-//Booked Visits
+//other Visits
 Route::post('/medical-booked-visit', [VisitBookController::class, 'index']);
 Route::post('/medical-booked-details', [VisitBookController::class, 'show']);
 Route::post('/medical-add-visit', [VisitBookController::class, 'store']);
+
+//Doctor Visits
+Route::post('/medical-doctor-booked-visit', [DoctorBookController::class, 'index']);
+Route::post('/medical-doctor-booked-details', [DoctorBookController::class, 'show']);
+Route::post('/medical-doctor-add-visit', [DoctorBookController::class, 'store']);
 
 //Cart
 Route::post('/medical-add-cart', [CartController::class, 'add']);
